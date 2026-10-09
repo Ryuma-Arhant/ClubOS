@@ -63,6 +63,13 @@ export default function Login() {
       <div style={{ position: 'relative', zIndex: 1, width: '100%', maxWidth: 420, margin: '0 24px' }}>
 
         <div style={{ textAlign: 'center', marginBottom: 30 }}>
+          <div style={{ marginBottom: 22 }}>
+            <a href="/" onClick={e => { e.preventDefault(); navigate('/'); }} style={{ color: '#777', fontSize: 12, fontWeight: 500, transition: 'color 0.2s' }}
+              onMouseEnter={e => e.currentTarget.style.color = '#F5C518'}
+              onMouseLeave={e => e.currentTarget.style.color = '#777'}>
+              ← Back to home
+            </a>
+          </div>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 13, marginBottom: 10 }}>
             <div style={{ width: 46, height: 46, borderRadius: 14, background: 'linear-gradient(135deg,#F5C518,#D97706)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: 24, color: '#000', boxShadow: '0 0 28px rgba(245,197,24,0.3)' }}>C</div>
             <span style={{ fontWeight: 800, fontSize: 26, color: '#fff', letterSpacing: 0.3 }}>ClubOS</span>
