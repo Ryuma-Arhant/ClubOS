@@ -3,6 +3,7 @@
 A full-stack web application for managing university clubs, events, members, galleries, and messaging.
 
 ---
+deployment link- https://cluboos.netlify.app/
 
 ## Tech Stack
 
