@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import Landing         from './pages/Landing';
 import Login           from './pages/Login';
 import SuperAdminDash  from './pages/SuperAdminDash';
 import ClubAdminDash   from './pages/ClubAdminDash';
@@ -21,16 +22,16 @@ const ROLE_ROUTES = {
 
 function Protected({ children, roles }) {
   const { user } = useAuth();
-  if (!user) return <Navigate to="/" replace />;
+  if (!user) return <Navigate to="/login" replace />;
   if (roles && !roles.includes(user.role)) {
     return <Navigate to={ROLE_ROUTES[user.role] || '/'} replace />;
   }
   return children;
 }
 
-function RootRedirect() {
+function RootRedirect({ page }) {
   const { user } = useAuth();
-  if (!user) return <Login />;
+  if (!user) return page;
   return <Navigate to={ROLE_ROUTES[user.role] || '/'} replace />;
 }
 
@@ -38,7 +39,8 @@ export default function App() {
   return (
     <AuthProvider>
       <Routes>
-        <Route path="/" element={<RootRedirect />} />
+        <Route path="/"      element={<RootRedirect page={<Landing />} />} />
+        <Route path="/login" element={<RootRedirect page={<Login />} />} />
 
         <Route path="/superadmin" element={
           <Protected roles={['Super Admin']}><SuperAdminDash /></Protected>
